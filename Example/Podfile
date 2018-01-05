@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CKVStore_Example' do
+  pod 'CKVStore', :path => '../'
+
+  target 'CKVStore_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

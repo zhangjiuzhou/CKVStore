@@ -1,0 +1,6 @@
+framework module CKVStore {
+  umbrella header "CKVStore-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,21 @@
+PODS:
+  - CKVStore (0.1.0):
+    - FMDB
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+
+DEPENDENCIES:
+  - CKVStore (from `../`)
+
+EXTERNAL SOURCES:
+  CKVStore:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CKVStore: dc61a75427900b888293d8bfa16089772d8e9958
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+
+PODFILE CHECKSUM: 59ab51d63fdd44fdfa36edc9c995eec045883aa5
+
+COCOAPODS: 1.2.1
