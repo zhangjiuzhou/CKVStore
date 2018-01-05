@@ -20,7 +20,7 @@ static dispatch_queue_t operationQueue;
 @implementation CKVStore
 
 + (instancetype)sharedStore {
-    return [self storeWithName:@"tbl_default"];
+    return [self storeWithName:@"default"];
 }
 
 + (instancetype)storeWithName:(NSString *)name {
@@ -58,7 +58,7 @@ static dispatch_queue_t operationQueue;
 }
 
 - (id<NSCoding>)objectForKey:(NSString *)key {
-    static NSString *const sqlTemplate = @"SELECT data, createdTime from %@ where id = ? Limit 1";
+    static NSString *const sqlTemplate = @"SELECT data, createdTime from `%@` where id = ? Limit 1";
 
     NSString *sql = [NSString stringWithFormat:sqlTemplate, self.name];
     __block NSData *objectData = nil;
@@ -83,7 +83,7 @@ static dispatch_queue_t operationQueue;
 }
 
 - (void)setObject:(id<NSCoding>)object forKey:(NSString *)key {
-    static NSString *const sqlTemplate = @"REPLACE INTO %@ (id, data, createdTime) values (?, ?, ?)";
+    static NSString *const sqlTemplate = @"REPLACE INTO `%@` (id, data, createdTime) values (?, ?, ?)";
 
     if (!object) {
         object = [NSNull null];
@@ -103,7 +103,7 @@ static dispatch_queue_t operationQueue;
 }
 
 - (void)deleteObjectForKey:(NSString *)key {
-    static NSString *const sqlTemplate = @"DELETE from %@ where id = ?";
+    static NSString *const sqlTemplate = @"DELETE from `%@` where id = ?";
 
     NSString * sql = [NSString stringWithFormat:sqlTemplate, self.name];
     __block BOOL result;
@@ -117,7 +117,7 @@ static dispatch_queue_t operationQueue;
 }
 
 - (void)clear {
-    static NSString *const sqlTemplate = @"DELETE from %@";
+    static NSString *const sqlTemplate = @"DELETE from `%@`";
 
     NSString *sql = [NSString stringWithFormat:sqlTemplate, self.name];
     __block BOOL result;
@@ -148,7 +148,7 @@ static dispatch_queue_t operationQueue;
 
 - (void)_createTable:(NSString *)table {
     static NSString *const sqlTemplate =
-    @"CREATE TABLE IF NOT EXISTS %@ ( \
+    @"CREATE TABLE IF NOT EXISTS `%@` ( \
     id TEXT NOT NULL, \
     data BLOB NOT NULL, \
     createdTime TEXT NOT NULL, \
