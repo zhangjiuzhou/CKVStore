@@ -9,11 +9,8 @@
 
 @interface CKVStore : NSObject
 
-+ (instancetype)sharedStore;
++ (instancetype)store;
 + (instancetype)storeWithName:(NSString *)name;
-
-+ (instancetype)new NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
 
 - (id<NSCoding>)objectForKey:(NSString *)key;
 - (void)setObject:(id<NSCoding>)object forKey:(NSString *)key;
@@ -22,5 +19,12 @@
 
 - (void)asyncObjectForKey:(NSString *)key complete:(void (^)(id<NSCoding> result))complete;
 - (void)asyncSetObject:(id<NSCoding>)object forKey:(NSString *)key complete:(void (^)(void))complete;
+
+@end
+
+@interface CKVStore (Unavailable)
+
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end

@@ -8,6 +8,7 @@
 #import "CKVStore.h"
 #import <FMDB/FMDB.h>
 
+static NSMutableDictionary *stores;
 static FMDatabaseQueue *queue;
 static dispatch_queue_t operationQueue;
 
@@ -19,13 +20,11 @@ static dispatch_queue_t operationQueue;
 
 @implementation CKVStore
 
-+ (instancetype)sharedStore {
++ (instancetype)store {
     return [self storeWithName:@"default"];
 }
 
 + (instancetype)storeWithName:(NSString *)name {
-    static NSMutableDictionary *stores;
-
     @synchronized (self) {
         if (!stores) {
             stores = [NSMutableDictionary dictionary];
@@ -38,6 +37,16 @@ static dispatch_queue_t operationQueue;
         }
 
         return store;
+    }
+}
+
++ (void)unsetStore {
+    [self unsetStoreWithName:@"default"];
+}
+
++ (void)unsetStoreWithName:(NSString *)name {
+    @synchronized (self) {
+        stores[name] = nil;
     }
 }
 

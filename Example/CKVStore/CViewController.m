@@ -19,10 +19,10 @@
 {
     [super viewDidLoad];
 
-    [[CKVStore sharedStore] setObject:@"VALUE" forKey:@"foobar"];
-    [[CKVStore sharedStore] asyncObjectForKey:@"foobar" complete:^(id<NSCoding> result) {
-        NSLog(@"%@", result);
-    }];
+    [[CKVStore store] setObject:@"bar" forKey:@"foo"];
+    NSLog(@"foo: %@", [[CKVStore store] objectForKey:@"foo"]);
+    [[CKVStore store] deleteObjectForKey:@"foo"];
+    NSLog(@"foo: %@", [[CKVStore store] objectForKey:@"foo"]);
 }
 
 @end
