@@ -3,8 +3,8 @@
 
 ## Example
 ```objective-c
-    [[CKVStore store] setObject:@"bar" forKey:@"foo"];
-    NSLog(@"foo: %@", [[CKVStore store] objectForKey:@"foo"]);
-    [[CKVStore store] deleteObjectForKey:@"foo"];
-    NSLog(@"foo: %@", [[CKVStore store] objectForKey:@"foo"]);
+[[CKVStore store] setObject:@"bar" forKey:@"foo"];
+NSLog(@"foo: %@", [[CKVStore store] objectForKey:@"foo"]);
+[[CKVStore store] deleteObjectForKey:@"foo"];
+NSLog(@"foo: %@", [[CKVStore store] objectForKey:@"foo"]);
 ```
